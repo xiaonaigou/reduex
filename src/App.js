@@ -2,17 +2,39 @@ import React, { Component, Fragment } from 'react';
 // 1 引入一个可以接收store的函数---connect
 import { connect } from "react-redux";
 
+// 导入action类型
+// import { NUM_ADD } from "./store/actionTypes";
+// import { NUM_SUB } from "./store/actionTypes";
+
+class PlusButton extends Component {
+  render(){
+    // console.log(this.props); //{}
+    return(
+      <button onClick={this.props.num_add}>+</button>
+    )
+  }
+}
+class SubButton extends Component {
+  render(){
+    // console.log(this.props); //{}
+    return(
+      <button onClick={this.props.num_sub}>-</button>
+    )
+  }
+}
+
 class App extends Component {
   render() {
+    // console.log(this.props);  // {num: 10001, num_add: ƒ, num_sub: ƒ}
+    // console.log(this.props.num); //10001
     return (
       <Fragment>
         {/* 3 将num改成属性的方式来使用  */}
         <div> 数字：{this.props.num}</div>
         <hr />
         <div>
-          <button onClick={this.props.num_add}>+</button>
-          {/* 减法 */}
-          <button onClick={this.props.num_sub}>-</button>
+          <PlusButton {...this.props}></PlusButton>
+          <SubButton {...this.props}></SubButton>
         </div>
       </Fragment>
     );
@@ -32,7 +54,7 @@ const mapDispatch = (dispatch)=>{
     num_add:()=>{
       // console.log(334);
       const action = {
-        type:"num_add",
+        type:"NUM_ADD",
         value:1
       }
       // 3.3 开始派发action
@@ -40,7 +62,7 @@ const mapDispatch = (dispatch)=>{
     },
     num_sub:()=>{
       const action = {
-        type:"num_sub",
+        type:"NUM_SUB",
         value:1
       }
       dispatch(action);
