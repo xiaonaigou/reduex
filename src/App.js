@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+  state = {
+    num: 100
+  }
+  handleNumAdd = () => {
+    let { num } = this.state;
+    num++;
+    this.setState({ num });
+  }
+  handleNumsubstr = () => {
+    let { num } = this.state;
+    num--;
+    this.setState({ num });
+  }
+  render() {
+    return (
+      <Fragment>
+        <div> 数字：{this.state.num}</div>
+        <hr />
+        <div>
+          <button onClick={this.handleNumAdd}>+</button>
+          {/* 减法 */}
+          <button onClick={this.handleNumsubstr}>-</button>
+        </div>
+      </Fragment>
+    );
+  }
 }
+
 
 export default App;
