@@ -45,7 +45,7 @@ class App extends Component {
 // connect 第一个参数 是实现store中的数据 和 组件中的属性的映射
 const mapStateToProps = (state) => {
   return {
-    num: state.num
+    num: state.fruitReducer.num
   }
 }
 // 3.1 定义对象负责处理所有app中的action
