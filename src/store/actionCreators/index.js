@@ -1,10 +1,10 @@
 import { NUM_ADD,NUM_SUB } from "../actionTypes";
 
 // 1. 水果数量增加
-export const num_fruit_add = () =>{
+export const num_fruit_add = (a) =>{
     return {
         type:NUM_ADD,
-        value:1
+        value:a
     }
 }
 

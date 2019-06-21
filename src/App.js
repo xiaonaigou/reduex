@@ -55,21 +55,14 @@ const mapStateToProps = (state) => {
 const mapDispatch = (dispatch)=>{
   return{
     num_add:()=>{
-      // console.log(334);
-      // const action = {
-      //   type:"NUM_ADD",
-      //   value:1
-      // }
-      // // 3.3 开始派发action
-      // dispatch(action);
-      dispatch(num_fruit_add());
+      // 3.3 开始派发action
+      // 给 src/store/actionTypes/index.js 里的函数传一个形参
+      // 方便函数传参,点击一次增加多少.
+      dispatch(num_fruit_add(10));
     },
     num_sub:()=>{
-      // const action = {
-      //   type:"NUM_SUB",
-      //   value:1
-      // }
-      // dispatch(action);
+      // 开始派发action
+      // 减 同理,此处未处理默认还是1
       dispatch(num_fruit_sub());
     }
   }
