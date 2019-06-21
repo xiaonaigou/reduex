@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 // import { NUM_ADD } from "./store/actionTypes";
 // import { NUM_SUB } from "./store/actionTypes";
 
+// 导入action
+import { num_fruit_add,num_fruit_sub } from "./store/actionCreators";
+
 class PlusButton extends Component {
   render(){
     // console.log(this.props); //{}
@@ -53,19 +56,21 @@ const mapDispatch = (dispatch)=>{
   return{
     num_add:()=>{
       // console.log(334);
-      const action = {
-        type:"NUM_ADD",
-        value:1
-      }
-      // 3.3 开始派发action
-      dispatch(action);
+      // const action = {
+      //   type:"NUM_ADD",
+      //   value:1
+      // }
+      // // 3.3 开始派发action
+      // dispatch(action);
+      dispatch(num_fruit_add());
     },
     num_sub:()=>{
-      const action = {
-        type:"NUM_SUB",
-        value:1
-      }
-      dispatch(action);
+      // const action = {
+      //   type:"NUM_SUB",
+      //   value:1
+      // }
+      // dispatch(action);
+      dispatch(num_fruit_sub());
     }
   }
 }
