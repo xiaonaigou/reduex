@@ -1,10 +1,10 @@
 // 导入action类型
-import { NUM_ADD,NUM_SUB } from "../actionTypes";
+import { NUM_ADD,NUM_SUB,NUM_FRUIT_INIT } from "../actionTypes";
 
 // 1. 初始数据
 // defaultState是定义的,和之前的state不一样
 const defaultState = {
-    num:10001
+    num:0
 };
 
 // 2. 暴露一个函数出去,会在函数中写很多小逻辑
@@ -17,14 +17,18 @@ export default (state = defaultState,action)=>{
 
     // 同级,使用switch更好
     switch (action.type) {
-        case "NUM_ADD":
+        case NUM_ADD:
             {let newState = JSON.parse(JSON.stringify(state));
             newState.num += action.value;
     
             return newState;}
-        case "NUM_SUB":
-            {    let newState = JSON.parse(JSON.stringify(state));  // Identifier 'newState' has already been declared --- newState已经有了
+        case NUM_SUB:
+            {    let newState = JSON.parse(JSON.stringify(state));
             newState.num -= action.value;
+            return newState;}
+        case NUM_FRUIT_INIT:
+            {    let newState = JSON.parse(JSON.stringify(state)); 
+            newState.num = action.value;
             return newState;}
             
         default:

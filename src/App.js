@@ -7,19 +7,20 @@ import { connect } from "react-redux";
 // import { NUM_SUB } from "./store/actionTypes";
 
 // 导入action
-import { num_fruit_add,num_fruit_sub } from "./store/actionCreators";
+import { num_fruit_add,num_fruit_sub,num_fruit_init } from "./store/actionCreators";
 
 class PlusButton extends Component {
   render(){
-    // console.log(this.props); //{}
+
     return(
       <button onClick={this.props.num_add}>+</button>
     )
   }
 }
 class SubButton extends Component {
+  
   render(){
-    // console.log(this.props); //{}
+    
     return(
       <button onClick={this.props.num_sub}>-</button>
     )
@@ -27,13 +28,15 @@ class SubButton extends Component {
 }
 
 class App extends Component {
+  componentDidMount(){
+    // 页面初次渲染完毕就会执行
+    this.props.num_fruit_init();
+  }
   render() {
-    // console.log(this.props);  // {num: 10001, num_add: ƒ, num_sub: ƒ}
-    // console.log(this.props.num); //10001
     return (
       <Fragment>
         {/* 3 将num改成属性的方式来使用  */}
-        <div> 数字：{this.props.num}</div>
+        <div> 水果：{this.props.num}</div>
         <hr />
         <div>
           <PlusButton {...this.props}></PlusButton>
@@ -61,9 +64,13 @@ const mapDispatch = (dispatch)=>{
       dispatch(num_fruit_add(10));
     },
     num_sub:()=>{
-      // 开始派发action
+      // 开始派发action 
       // 减 同理,此处未处理默认还是1
       dispatch(num_fruit_sub());
+    },
+    // 数量的初始化方法
+    num_fruit_init:()=>{
+      dispatch(num_fruit_init());
     }
   }
 }
